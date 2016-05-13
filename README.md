@@ -45,6 +45,11 @@ Kubernetes is all about applications and in this section you will utilize the Ku
 
 #### Labs
 
+For each of the following labs, you should be in the kubernetes dir:
+```
+cd orchestrate-with-kubernetes/kubernetes
+```
+
   * [Creating and managing pods](labs/creating-and-managing-pods.md)
   * [Monitoring and health checks](labs/monitoring-and-health-checks.md)
   * [Managing application configurations and secrets](labs/managing-application-configurations-and-secrets.md)
