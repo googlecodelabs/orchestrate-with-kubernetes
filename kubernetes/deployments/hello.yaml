@@ -9,6 +9,7 @@ spec:
       labels:
         app: hello
         track: stable
+        version: 1.0.0
     spec:
       containers:
         - name: hello
