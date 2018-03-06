@@ -87,6 +87,15 @@ Use the `curl` command to test the HTTPS endpoint:
 curl --cacert tls/ca.pem https://127.0.0.1:10443
 ```
 
+> Notice the SSL error due to certificate belonging to example.com 
+
+Optional: Add example.com to hosts and try again
+
+```
+echo "127.0.0.1 local.example.com" | sudo tee -a /etc/hosts
+curl --cacert tls/ca.pem https://local.example.com:10443
+```
+
 Use the `kubectl logs` command to verify traffic to the `secure-monolith` Pod:
 
 ```
