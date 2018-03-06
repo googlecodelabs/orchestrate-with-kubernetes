@@ -1,4 +1,4 @@
-# Orchestrating the Cloud with Kuberenetes
+# Orchestrating the Cloud with Kubernetes
 
 In this Codelab you will learn how to:
 

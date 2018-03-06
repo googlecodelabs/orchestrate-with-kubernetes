@@ -2,7 +2,7 @@
 
 Kubernetes makes it easy to rollout updates to your applications using the builtin rolling update mechanism. In this lab you will learn how to:
 
-* Modify deployments to tigger rolling updates
+* Modify deployments to trigger rolling updates
 * Pause and resume an active rolling update
 * Rollback a deployment to a previous revision
 
@@ -72,7 +72,7 @@ kubectl rollout resume deployment hello
 
 ## Exercise: Rollback the Hello service
 
-Use the `kubectl rollout undo` command to rollback to a previous deployment of the Hello service.
+Use the `kubectl rollout undo service hello` command to rollback to a previous deployment of the Hello service.
 
 ## Summary
 
