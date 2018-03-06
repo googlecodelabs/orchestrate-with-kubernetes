@@ -72,7 +72,7 @@ kubectl rollout resume deployment hello
 
 ## Exercise: Rollback the Hello service
 
-Use the `kubectl rollout undo` command to rollback to a previous deployment of the Hello service.
+Use the `kubectl rollout undo service hello` command to rollback to a previous deployment of the Hello service.
 
 ## Summary
 
