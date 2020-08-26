@@ -59,7 +59,7 @@ cd orchestrate-with-kubernetes/kubernetes
 
 ## Links
 
-  * [Kubernetes](http://googlecloudplatform.github.io/kubernetes)
+  * [Kubernetes](https://kubernetes.io/)
   * [gcloud Tool Guide](https://cloud.google.com/sdk/gcloud)
   * [Docker](https://docs.docker.com)
   * [etcd](https://coreos.com/docs/distributed-configuration/getting-started-with-etcd)
