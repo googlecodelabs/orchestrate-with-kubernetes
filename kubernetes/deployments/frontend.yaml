@@ -1,8 +1,11 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
 spec:
+  selector:
+    matchLabels:
+      app: frontend
   replicas: 1
   template:
     metadata:
@@ -16,7 +19,7 @@ spec:
           lifecycle:
             preStop:
               exec:
-                command: ["/usr/sbin/nginx","-s","quit"]
+                command: ["/usr/sbin/nginx", "-s", "quit"]
           volumeMounts:
             - name: "nginx-frontend-conf"
               mountPath: "/etc/nginx/conf.d"
