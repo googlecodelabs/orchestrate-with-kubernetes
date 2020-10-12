@@ -6,7 +6,7 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: "hello-green"
+      app: "hello"
   template:
     metadata:
       labels:
