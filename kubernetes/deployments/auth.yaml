@@ -4,6 +4,9 @@ metadata:
   name: auth
 spec:
   replicas: 1
+   selector:
+    matchLabels:
+      app: auth
   template:
     metadata:
       labels:
