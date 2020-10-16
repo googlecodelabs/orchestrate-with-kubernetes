@@ -22,6 +22,24 @@ sudo cp kubectl /usr/local/bin/kubectl
 
 ### Configure kubectl
 
+Configure alias and autocomplete Bash:
+```.bash
+echo "alias k=kubectl" >> ~/.bashrc
+echo "source <(kubectl completion bash)" >> ~/.bashrc
+echo "complete -F __start_kubectl k" >> ~/.bashrc
+
+source ~/.bashrc
+```
+
+Configure alias and autocomplete Zsh:
+```.zsh
+echo "alias k=kubectl" >> ~/.zshrc
+echo "[[ $commands[kubectl] ]] && source <(kubectl completion zsh)" >> ~/.zshrc
+echo "complete -F __start_kubectl k" >> ~/.zshrc
+
+source ~/.zshrc
+```
+
 Download the client credentials and CA cert:
 
 ```

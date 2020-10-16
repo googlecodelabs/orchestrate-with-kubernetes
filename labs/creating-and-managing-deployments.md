@@ -17,7 +17,7 @@ You will also define internal services for the `auth` and `hello` deployments an
 ### Create and Expose the Auth Deployment
 
 ```
-kubectl create -f deployments/auth.yaml
+kubectl apply -f deployments/auth.yaml --record
 ```
 
 ```
@@ -31,7 +31,7 @@ kubectl create -f services/auth.yaml
 ### Create and Expose the Hello Deployment
 
 ```
-kubectl create -f deployments/hello.yaml
+kubectl apply -f deployments/hello.yaml --record
 ```
 
 ```
@@ -50,7 +50,7 @@ kubectl create configmap nginx-frontend-conf --from-file=nginx/frontend.conf
 ```
 
 ```
-kubectl create -f deployments/frontend.yaml
+kubectl apply -f deployments/frontend.yaml --record
 ```
 
 ```

@@ -1,9 +1,14 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello-green
 spec:
   replicas: 3
+  selector:
+    matchLabels:
+      app: hello
+      track: stable
+      version: 2.0.0
   template:
     metadata:
       labels:
