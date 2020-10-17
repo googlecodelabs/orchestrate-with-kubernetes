@@ -1,39 +1,89 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
+  creationTimestamp: null
+  labels:
+    app: auth
+    track: stable
   name: auth
 spec:
+  progressDeadlineSeconds: 2147483647
   replicas: 1
+  revisionHistoryLimit: 2147483647
+  selector:
+    matchLabels:
+      app: auth
+      track: stable
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
   template:
     metadata:
+      creationTimestamp: null
       labels:
         app: auth
         track: stable
     spec:
       containers:
-        - name: auth
-          image: "kelseyhightower/auth:2.0.0"
-          ports:
-            - name: http
-              containerPort: 80
-            - name: health
-              containerPort: 81
-          resources:
-            limits:
-              cpu: 0.2
-              memory: "10Mi"
-          livenessProbe:
-            httpGet:
-              path: /healthz
-              port: 81
-              scheme: HTTP
-            initialDelaySeconds: 5
-            periodSeconds: 15
-            timeoutSeconds: 5
-          readinessProbe:
-            httpGet:
-              path: /readiness
-              port: 81
-              scheme: HTTP
-            initialDelaySeconds: 5
-            timeoutSeconds: 1
+      - image: kelseyhightower/auth:2.0.0
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /healthz
+            port: 81
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 15
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: auth
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        - containerPort: 81
+          name: health
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /healthz
+            port: 81
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 15
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: auth
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        - containerPort: 81
+          name: health
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /readiness
+            port: 81
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            cpu: 200m
+            memory: 10Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status: {}
