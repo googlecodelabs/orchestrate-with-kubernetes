@@ -1,9 +1,16 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: auth
+  labels:
+    app: auth
+    track: stable
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: auth
+      track: stable
   template:
     metadata:
       labels:
